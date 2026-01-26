@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Анкета в команду администрации</title>
+    <title>Анкета в команду администрации | Qullysuim Corporation</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
@@ -11,126 +11,159 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <div class="logo-container">
-                <div class="logo">
-                    <i class="fas fa-user-shield"></i>
+        <!-- Боковая панель с информацией о сервере -->
+        <div class="sidebar">
+            <div class="server-info">
+                <div class="server-avatar">
+                    <img src="https://cdn.discordapp.com/attachments/1142563887833153546/1142563916743946340/logotip.png" alt="Аватар сервера">
                 </div>
-                <h1>Анкета в команду администрации</h1>
+                <h2 class="server-name">ЧАЙДИ КОМФОРТНОЕ ОБЩЕСТВО</h2>
+                <p class="server-corporation">Qullysuim Corporation</p>
+                
+                <div class="server-description">
+                    <p><i class="fas fa-users"></i> Комфортное сообщество для общения</p>
+                    <p><i class="fas fa-shield-alt"></i> Безопасная и дружелюбная атмосфера</p>
+                    <p><i class="fas fa-star"></i> Профессиональная команда администрации</p>
+                </div>
             </div>
-            <p class="subtitle">Заполните форму ниже, чтобы подать заявку на вступление в команду модераторов сервера</p>
-        </header>
-
-        <main>
-            <div class="info-section">
-                <div class="info-header">
-                    <i class="fas fa-info-circle"></i>
-                    <h2>Перед заполнением анкеты ознакомьтесь с информацией ниже:</h2>
+            
+            <div class="contact-info">
+                <h3><i class="fas fa-headset"></i> Поддержка</h3>
+                <p>По любым вопросам обращайтесь к администрации сервера через тикеты или личные сообщения.</p>
+                <div class="contact-badge">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>Мы всегда на связи</span>
                 </div>
-                <ul class="info-list">
-                    <li><i class="fas fa-check-circle"></i> Убедитесь, что в Discord у вас включены приглашения в друзья</li>
-                    <li><i class="fas fa-check-circle"></i> Подавая анкету, вы автоматически подтверждаете, что у вас не было серьезных нарушений на аккаунте</li>
-                    <li><i class="fas fa-check-circle"></i> Рассмотрение заявки занимает от 10 минут до 1 недели</li>
-                </ul>
             </div>
+        </div>
 
-            <form id="applicationForm">
-                <div class="form-group">
-                    <label for="discord">
-                        <i class="fab fa-discord"></i>
-                        Ваш Discord ник*
-                    </label>
-                    <input type="text" id="discord" name="discord" placeholder="Например: UserName#1234" required>
-                    <div class="input-underline"></div>
+        <!-- Основное содержимое -->
+        <div class="main-content">
+            <header>
+                <div class="header-content">
+                    <h1>Анкета в команду администрации</h1>
+                    <p class="subtitle">Стань частью профессиональной команды модераторов Qullysuim Corporation</p>
                 </div>
+            </header>
 
-                <div class="form-group">
-                    <label for="telegram">
-                        <i class="fab fa-telegram"></i>
-                        Ваш юзернейм в Telegram*
-                    </label>
-                    <input type="text" id="telegram" name="telegram" placeholder="Например: @username" required>
-                    <div class="input-underline"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="age">
-                        <i class="fas fa-birthday-cake"></i>
-                        Сколько вам лет?*
-                    </label>
-                    <input type="number" id="age" name="age" min="14" max="70" placeholder="Введите ваш возраст" required>
-                    <div class="input-underline"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="discovery">
-                        <i class="fas fa-search"></i>
-                        Как вы узнали о сервере?*
-                    </label>
-                    <input type="text" id="discovery" name="discovery" placeholder="Напишите, как вы узнали о нашем сервере" required>
-                    <div class="input-underline"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="bans">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        Были ли у вас блокировки на аккаунте? Если да - то какие?
-                    </label>
-                    <textarea id="bans" name="bans" rows="3" placeholder="Опишите подробно, если были блокировки"></textarea>
-                    <div class="input-underline"></div>
-                </div>
-
-                <div class="form-group radio-group">
-                    <p class="radio-label">
-                        <i class="fas fa-phone"></i>
-                        Готовы ли вы пройти обзвон?*
-                    </p>
-                    <div class="radio-options">
-                        <label class="radio-option">
-                            <input type="radio" name="interview" value="Да" required>
-                            <span class="radio-custom"></span>
-                            <span class="radio-text">Да, готов</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="interview" value="Нет" required>
-                            <span class="radio-custom"></span>
-                            <span class="radio-text">Нет, не готов</span>
-                        </label>
+            <main>
+                <div class="info-section">
+                    <div class="info-header">
+                        <i class="fas fa-info-circle"></i>
+                        <h2>Перед заполнением анкеты ознакомьтесь с информацией ниже:</h2>
                     </div>
+                    <ul class="info-list">
+                        <li><i class="fas fa-user-check"></i> Убедитесь, что в Discord у вас включены приглашения в друзья</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> Подавая анкету, вы автоматически подтверждаете, что у вас не было серьезных нарушений на аккаунте</li>
+                        <li><i class="fas fa-clock"></i> Рассмотрение заявки занимает от 10 минут до 1 недели</li>
+                    </ul>
                 </div>
 
-                <div class="form-group radio-group">
-                    <p class="radio-label">
-                        <i class="fas fa-microphone"></i>
-                        Имеете ли вы микрофон?*
-                    </p>
-                    <div class="radio-options">
-                        <label class="radio-option">
-                            <input type="radio" name="microphone" value="Да" required>
-                            <span class="radio-custom"></span>
-                            <span class="radio-text">Да, имею</span>
+                <form id="applicationForm">
+                    <div class="form-group">
+                        <label for="discord">
+                            <i class="fab fa-discord"></i>
+                            Ваш Discord ник*
                         </label>
-                        <label class="radio-option">
-                            <input type="radio" name="microphone" value="Нет" required>
-                            <span class="radio-custom"></span>
-                            <span class="radio-text">Нет, не имею</span>
-                        </label>
+                        <input type="text" id="discord" name="discord" placeholder="Например: UserName#1234" required>
+                        <div class="input-underline"></div>
                     </div>
-                </div>
 
-                <div class="form-footer">
-                    <p class="required-note"><span>*</span> Обязательные для заполнения поля</p>
-                    <button type="submit" id="submitBtn" class="submit-btn">
-                        <span class="btn-text">Отправить анкету</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
-            </form>
-        </main>
+                    <div class="form-group">
+                        <label for="telegram">
+                            <i class="fab fa-telegram"></i>
+                            Ваш юзернейм в Telegram*
+                        </label>
+                        <input type="text" id="telegram" name="telegram" placeholder="Например: @username" required>
+                        <div class="input-underline"></div>
+                    </div>
 
-        <footer>
-            <p>© 2026 Анкета в команду администрации. Все права защищены.</p>
-        </footer>
+                    <div class="form-group">
+                        <label for="age">
+                            <i class="fas fa-birthday-cake"></i>
+                            Сколько вам лет?*
+                        </label>
+                        <input type="number" id="age" name="age" min="14" max="70" placeholder="Введите ваш возраст" required>
+                        <div class="input-underline"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="discovery">
+                            <i class="fas fa-search"></i>
+                            Как вы узнали о сервере?*
+                        </label>
+                        <input type="text" id="discovery" name="discovery" placeholder="Напишите, как вы узнали о нашем сервере" required>
+                        <div class="input-underline"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bans">
+                            <i class="fas fa-ban"></i>
+                            Были ли у вас блокировки на аккаунте? Если да - то какие?
+                        </label>
+                        <textarea id="bans" name="bans" rows="3" placeholder="Опишите подробно, если были блокировки"></textarea>
+                        <div class="input-underline"></div>
+                    </div>
+
+                    <div class="form-group radio-group">
+                        <p class="radio-label">
+                            <i class="fas fa-phone-volume"></i>
+                            Готовы ли вы пройти обзвон?*
+                        </p>
+                        <div class="radio-options">
+                            <label class="radio-option">
+                                <input type="radio" name="interview" value="Да" required>
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Да, готов</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="interview" value="Нет" required>
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Нет, не готов</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group radio-group">
+                        <p class="radio-label">
+                            <i class="fas fa-microphone-alt"></i>
+                            Имеете ли вы микрофон?*
+                        </p>
+                        <div class="radio-options">
+                            <label class="radio-option">
+                                <input type="radio" name="microphone" value="Да" required>
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Да, имею</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="microphone" value="Нет" required>
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Нет, не имею</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-footer">
+                        <p class="required-note"><span>*</span> Обязательные для заполнения поля</p>
+                        <button type="submit" id="submitBtn" class="submit-btn">
+                            <span class="btn-text">Отправить анкету</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+            </main>
+
+            <footer>
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <img src="https://cdn.discordapp.com/attachments/1142563887833153546/1142563916743946340/logotip.png" alt="Логотип Qullysuim">
+                        <span>Qullysuim Corporation</span>
+                    </div>
+                    <p>© 2026 Анкета в команду администрации. Все права защищены.</p>
+                    <p class="footer-note">ЧАЙДИ КОМФОРТНОЕ ОБЩЕСТВО</p>
+                </div>
+            </footer>
+        </div>
     </div>
 
     <!-- Модальное окно с результатом отправки -->
