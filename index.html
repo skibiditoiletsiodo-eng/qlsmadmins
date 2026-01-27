@@ -8,6 +8,108 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://cdn.discordapp.com/attachments/1142563887833153546/1142563916743946340/logotip.png">
+    <style>
+        /* Стили для кнопки переключения */
+        .switch-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .switch-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .switch-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .switch-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .switch-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(106, 17, 203, 0.4);
+        }
+        
+        .switch-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .switch-btn i {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+        
+        .switch-btn:hover i {
+            transform: rotate(180deg);
+        }
+        
+        .switch-btn span {
+            position: relative;
+        }
+        
+        .switch-btn.developer-mode {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            box-shadow: 0 4px 15px rgba(17, 153, 142, 0.3);
+        }
+        
+        .switch-btn.developer-mode::before {
+            background: linear-gradient(135deg, #38ef7d 0%, #11998e 100%);
+        }
+        
+        .switch-btn.developer-mode:hover {
+            box-shadow: 0 6px 20px rgba(17, 153, 142, 0.4);
+        }
+        
+        /* Стили для контента анкет */
+        .form-content {
+            display: block;
+        }
+        
+        .form-content.hidden {
+            display: none;
+        }
+        
+        /* Счетчик слов */
+        .word-counter {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+            text-align: right;
+        }
+        
+        .word-counter span {
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -41,21 +143,23 @@
         <div class="main-content">
             <header>
                 <div class="header-content">
-                    <h1>Анкеты в команду</h1>
-                    <p class="subtitle">Стань частью профессиональной команды Qullysuim Corporation</p>
+                    <h1>Анкета в команду администрации</h1>
+                    <p class="subtitle">Стань частью профессиональной команды модераторов Qullysuim Corporation</p>
                 </div>
             </header>
 
-            <!-- Табы для переключения между анкетами -->
-            <div class="tabs">
-                <button class="tab-btn active" data-tab="admin">Администратор</button>
-                <button class="tab-btn" data-tab="developer">Разработчик</button>
+            <!-- Кнопка переключения между анкетами -->
+            <div class="switch-container">
+                <button id="switchBtn" class="switch-btn">
+                    <i class="fas fa-code"></i>
+                    <span>Перейти к анкете разработчика</span>
+                </button>
             </div>
 
-            <!-- Контент вкладок -->
+            <!-- Контент анкет -->
             <main>
-                <!-- Анкета администратора -->
-                <div class="tab-content active" id="admin-tab">
+                <!-- Анкета администратора (показывается по умолчанию) -->
+                <div id="adminFormContent" class="form-content">
                     <div class="info-section">
                         <div class="info-header">
                             <i class="fas fa-info-circle"></i>
@@ -162,8 +266,8 @@
                     </form>
                 </div>
 
-                <!-- Анкета разработчика -->
-                <div class="tab-content" id="developer-tab">
+                <!-- Анкета разработчика (скрыта по умолчанию) -->
+                <div id="devFormContent" class="form-content hidden">
                     <div class="info-section">
                         <div class="info-header">
                             <i class="fas fa-code"></i>
@@ -363,42 +467,61 @@
 
     <script src="script.js"></script>
     <script>
-        // JavaScript для работы с вкладками
         document.addEventListener('DOMContentLoaded', function() {
-            // Переключение между вкладками
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            const tabContents = document.querySelectorAll('.tab-content');
+            const switchBtn = document.getElementById('switchBtn');
+            const adminFormContent = document.getElementById('adminFormContent');
+            const devFormContent = document.getElementById('devFormContent');
+            const headerTitle = document.querySelector('header h1');
+            const headerSubtitle = document.querySelector('header .subtitle');
             
-            tabBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const tabId = this.getAttribute('data-tab');
+            let isDeveloperMode = false;
+            
+            // Функция переключения между анкетами
+            function switchForms() {
+                isDeveloperMode = !isDeveloperMode;
+                
+                if (isDeveloperMode) {
+                    // Переключаем на анкету разработчика
+                    adminFormContent.classList.add('hidden');
+                    devFormContent.classList.remove('hidden');
+                    switchBtn.classList.add('developer-mode');
+                    switchBtn.innerHTML = '<i class="fas fa-user-shield"></i><span>Вернуться к анкете администратора</span>';
                     
-                    // Убираем активный класс у всех кнопок и контента
-                    tabBtns.forEach(b => b.classList.remove('active'));
-                    tabContents.forEach(c => c.classList.remove('active'));
+                    headerTitle.textContent = 'Анкета в команду разработки';
+                    headerSubtitle.textContent = 'Стань частью профессиональной команды разработчиков Qullysuim Corporation';
+                } else {
+                    // Переключаем на анкету администратора
+                    adminFormContent.classList.remove('hidden');
+                    devFormContent.classList.add('hidden');
+                    switchBtn.classList.remove('developer-mode');
+                    switchBtn.innerHTML = '<i class="fas fa-code"></i><span>Перейти к анкете разработчика</span>';
                     
-                    // Добавляем активный класс текущей кнопке и соответствующему контенту
-                    this.classList.add('active');
-                    document.getElementById(`${tabId}-tab`).classList.add('active');
-                });
-            });
+                    headerTitle.textContent = 'Анкета в команду администрации';
+                    headerSubtitle.textContent = 'Стань частью профессиональной команды модераторов Qullysuim Corporation';
+                }
+            }
+            
+            // Обработчик клика на кнопку переключения
+            switchBtn.addEventListener('click', switchForms);
             
             // Счетчик слов для поля "Расскажите о себе"
             const aboutTextarea = document.getElementById('dev_about');
             const wordCountSpan = document.getElementById('wordCount');
             
-            aboutTextarea.addEventListener('input', function() {
-                const text = this.value.trim();
-                const wordCount = text === '' ? 0 : text.split(/\s+/).length;
-                wordCountSpan.textContent = wordCount;
-                
-                // Изменяем цвет счетчика, если слов недостаточно
-                if (wordCount < 70) {
-                    wordCountSpan.style.color = '#ff6b6b';
-                } else {
-                    wordCountSpan.style.color = '#51cf66';
-                }
-            });
+            if (aboutTextarea && wordCountSpan) {
+                aboutTextarea.addEventListener('input', function() {
+                    const text = this.value.trim();
+                    const wordCount = text === '' ? 0 : text.split(/\s+/).length;
+                    wordCountSpan.textContent = wordCount;
+                    
+                    // Изменяем цвет счетчика, если слов недостаточно
+                    if (wordCount < 70) {
+                        wordCountSpan.style.color = '#ff6b6b';
+                    } else {
+                        wordCountSpan.style.color = '#51cf66';
+                    }
+                });
+            }
             
             // Отправка анкеты разработчика
             const devForm = document.getElementById('developerForm');
@@ -423,24 +546,30 @@
                     
                     // Сброс формы
                     devForm.reset();
-                    wordCountSpan.textContent = '0';
-                    wordCountSpan.style.color = '#ff6b6b';
+                    if (wordCountSpan) {
+                        wordCountSpan.textContent = '0';
+                        wordCountSpan.style.color = '#ff6b6b';
+                    }
                     
                     // Показываем модальное окно
-                    devResultModal.style.display = 'flex';
+                    if (devResultModal) {
+                        devResultModal.style.display = 'flex';
+                    }
                 });
             }
             
             // Закрытие модального окна разработчика
             if (closeDevModal) {
                 closeDevModal.addEventListener('click', function() {
-                    devResultModal.style.display = 'none';
+                    if (devResultModal) {
+                        devResultModal.style.display = 'none';
+                    }
                 });
             }
             
             // Закрытие модального окна при клике вне его
             window.addEventListener('click', function(e) {
-                if (e.target === devResultModal) {
+                if (devResultModal && e.target === devResultModal) {
                     devResultModal.style.display = 'none';
                 }
             });
