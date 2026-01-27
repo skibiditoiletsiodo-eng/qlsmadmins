@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Анкета в команду администрации | Qullysuim Corporation</title>
+    <title>Анкеты | Qullysuim Corporation</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
                 <div class="server-description">
                     <p><i class="fas fa-users"></i> Комфортное сообщество для общения</p>
                     <p><i class="fas fa-shield-alt"></i> Безопасная и дружелюбная атмосфера</p>
-                    <p><i class="fas fa-star"></i> Профессиональная команда администрации</p>
+                    <p><i class="fas fa-code"></i> Профессиональные команды администрирования и разработки</p>
                 </div>
             </div>
             
@@ -41,116 +41,262 @@
         <div class="main-content">
             <header>
                 <div class="header-content">
-                    <h1>Анкета в команду администрации</h1>
-                    <p class="subtitle">Стань частью профессиональной команды модераторов Qullysuim Corporation</p>
+                    <h1>Анкеты в команду</h1>
+                    <p class="subtitle">Стань частью профессиональной команды Qullysuim Corporation</p>
                 </div>
             </header>
 
+            <!-- Табы для переключения между анкетами -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="admin">Администратор</button>
+                <button class="tab-btn" data-tab="developer">Разработчик</button>
+            </div>
+
+            <!-- Контент вкладок -->
             <main>
-                <div class="info-section">
-                    <div class="info-header">
-                        <i class="fas fa-info-circle"></i>
-                        <h2>Перед заполнением анкеты ознакомьтесь с информацией ниже:</h2>
+                <!-- Анкета администратора -->
+                <div class="tab-content active" id="admin-tab">
+                    <div class="info-section">
+                        <div class="info-header">
+                            <i class="fas fa-info-circle"></i>
+                            <h2>Перед заполнением анкеты ознакомьтесь с информацией ниже:</h2>
+                        </div>
+                        <ul class="info-list">
+                            <li><i class="fas fa-user-check"></i> Убедитесь, что в Discord у вас включены приглашения в друзья</li>
+                            <li><i class="fas fa-exclamation-triangle"></i> Подавая анкету, вы автоматически подтверждаете, что у вас не было серьезных нарушений на аккаунте</li>
+                            <li><i class="fas fa-clock"></i> Рассмотрение заявки занимает от 10 минут до 1 недели</li>
+                        </ul>
                     </div>
-                    <ul class="info-list">
-                        <li><i class="fas fa-user-check"></i> Убедитесь, что в Discord у вас включены приглашения в друзья</li>
-                        <li><i class="fas fa-exclamation-triangle"></i> Подавая анкету, вы автоматически подтверждаете, что у вас не было серьезных нарушений на аккаунте</li>
-                        <li><i class="fas fa-clock"></i> Рассмотрение заявки занимает от 10 минут до 1 недели</li>
-                    </ul>
+
+                    <form id="applicationForm">
+                        <div class="form-group">
+                            <label for="discord">
+                                <i class="fab fa-discord"></i>
+                                Ваш Discord ник*
+                            </label>
+                            <input type="text" id="discord" name="discord" placeholder="Например: UserName#1234" required>
+                            <div class="input-underline"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telegram">
+                                <i class="fab fa-telegram"></i>
+                                Ваш юзернейм в Telegram*
+                            </label>
+                            <input type="text" id="telegram" name="telegram" placeholder="Например: @username" required>
+                            <div class="input-underline"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="age">
+                                <i class="fas fa-birthday-cake"></i>
+                                Сколько вам лет?*
+                            </label>
+                            <input type="number" id="age" name="age" min="14" max="70" placeholder="Введите ваш возраст" required>
+                            <div class="input-underline"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="discovery">
+                                <i class="fas fa-search"></i>
+                                Как вы узнали о сервере?*
+                            </label>
+                            <input type="text" id="discovery" name="discovery" placeholder="Напишите, как вы узнали о нашем сервере" required>
+                            <div class="input-underline"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bans">
+                                <i class="fas fa-ban"></i>
+                                Были ли у вас блокировки на аккаунте? Если да - то какие?
+                            </label>
+                            <textarea id="bans" name="bans" rows="3" placeholder="Опишите подробно, если были блокировки"></textarea>
+                            <div class="input-underline"></div>
+                        </div>
+
+                        <div class="form-group radio-group">
+                            <p class="radio-label">
+                                <i class="fas fa-phone-volume"></i>
+                                Готовы ли вы пройти обзвон?*
+                            </p>
+                            <div class="radio-options">
+                                <label class="radio-option">
+                                    <input type="radio" name="interview" value="Да" required>
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-text">Да, готов</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="interview" value="Нет" required>
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-text">Нет, не готов</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group radio-group">
+                            <p class="radio-label">
+                                <i class="fas fa-microphone-alt"></i>
+                                Имеете ли вы микрофон?*
+                            </p>
+                            <div class="radio-options">
+                                <label class="radio-option">
+                                    <input type="radio" name="microphone" value="Да" required>
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-text">Да, имею</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="microphone" value="Нет" required>
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-text">Нет, не имею</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-footer">
+                            <p class="required-note"><span>*</span> Обязательные для заполнения поля</p>
+                            <button type="submit" id="submitBtn" class="submit-btn">
+                                <span class="btn-text">Отправить анкету</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
                 </div>
 
-                <form id="applicationForm">
-                    <div class="form-group">
-                        <label for="discord">
-                            <i class="fab fa-discord"></i>
-                            Ваш Discord ник*
-                        </label>
-                        <input type="text" id="discord" name="discord" placeholder="Например: UserName#1234" required>
-                        <div class="input-underline"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="telegram">
-                            <i class="fab fa-telegram"></i>
-                            Ваш юзернейм в Telegram*
-                        </label>
-                        <input type="text" id="telegram" name="telegram" placeholder="Например: @username" required>
-                        <div class="input-underline"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="age">
-                            <i class="fas fa-birthday-cake"></i>
-                            Сколько вам лет?*
-                        </label>
-                        <input type="number" id="age" name="age" min="14" max="70" placeholder="Введите ваш возраст" required>
-                        <div class="input-underline"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="discovery">
-                            <i class="fas fa-search"></i>
-                            Как вы узнали о сервере?*
-                        </label>
-                        <input type="text" id="discovery" name="discovery" placeholder="Напишите, как вы узнали о нашем сервере" required>
-                        <div class="input-underline"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="bans">
-                            <i class="fas fa-ban"></i>
-                            Были ли у вас блокировки на аккаунте? Если да - то какие?
-                        </label>
-                        <textarea id="bans" name="bans" rows="3" placeholder="Опишите подробно, если были блокировки"></textarea>
-                        <div class="input-underline"></div>
-                    </div>
-
-                    <div class="form-group radio-group">
-                        <p class="radio-label">
-                            <i class="fas fa-phone-volume"></i>
-                            Готовы ли вы пройти обзвон?*
-                        </p>
-                        <div class="radio-options">
-                            <label class="radio-option">
-                                <input type="radio" name="interview" value="Да" required>
-                                <span class="radio-custom"></span>
-                                <span class="radio-text">Да, готов</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="interview" value="Нет" required>
-                                <span class="radio-custom"></span>
-                                <span class="radio-text">Нет, не готов</span>
-                            </label>
+                <!-- Анкета разработчика -->
+                <div class="tab-content" id="developer-tab">
+                    <div class="info-section">
+                        <div class="info-header">
+                            <i class="fas fa-code"></i>
+                            <h2>Анкета на позицию разработчика сервера</h2>
                         </div>
+                        <ul class="info-list">
+                            <li><i class="fas fa-terminal"></i> Будьте готовы продемонстрировать свои навыки программирования</li>
+                            <li><i class="fas fa-exclamation-triangle"></i> Убедитесь, что у вас нет серьезных нарушений на аккаунте</li>
+                            <li><i class="fas fa-clock"></i> Рассмотрение заявки может занять до 2 недель</li>
+                        </ul>
                     </div>
 
-                    <div class="form-group radio-group">
-                        <p class="radio-label">
-                            <i class="fas fa-microphone-alt"></i>
-                            Имеете ли вы микрофон?*
-                        </p>
-                        <div class="radio-options">
-                            <label class="radio-option">
-                                <input type="radio" name="microphone" value="Да" required>
-                                <span class="radio-custom"></span>
-                                <span class="radio-text">Да, имею</span>
+                    <form id="developerForm">
+                        <div class="form-group">
+                            <label for="dev_age">
+                                <i class="fas fa-birthday-cake"></i>
+                                Сколько вам лет?*
                             </label>
-                            <label class="radio-option">
-                                <input type="radio" name="microphone" value="Нет" required>
-                                <span class="radio-custom"></span>
-                                <span class="radio-text">Нет, не имею</span>
-                            </label>
+                            <input type="number" id="dev_age" name="dev_age" min="14" max="70" placeholder="Введите ваш возраст" required>
+                            <div class="input-underline"></div>
                         </div>
-                    </div>
 
-                    <div class="form-footer">
-                        <p class="required-note"><span>*</span> Обязательные для заполнения поля</p>
-                        <button type="submit" id="submitBtn" class="submit-btn">
-                            <span class="btn-text">Отправить анкету</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </div>
-                </form>
+                        <div class="form-group">
+                            <label for="dev_discovery">
+                                <i class="fas fa-search"></i>
+                                Как вы узнали о сервере?*
+                            </label>
+                            <input type="text" id="dev_discovery" name="dev_discovery" placeholder="Напишите, как вы узнали о нашем сервере" required>
+                            <div class="input-underline"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dev_time">
+                                <i class="fas fa-calendar-alt"></i>
+                                Сколько вы находитесь на нашем сервере?*
+                            </label>
+                            <input type="text" id="dev_time" name="dev_time" placeholder="Например: 2 месяца, 1 год и т.д." required>
+                            <div class="input-underline"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dev_telegram">
+                                <i class="fab fa-telegram"></i>
+                                Ваш Telegram*
+                            </label>
+                            <input type="text" id="dev_telegram" name="dev_telegram" placeholder="@username" required>
+                            <div class="input-underline"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dev_discord">
+                                <i class="fab fa-discord"></i>
+                                Ваш Discord*
+                            </label>
+                            <input type="text" id="dev_discord" name="dev_discord" placeholder="UserName#1234" required>
+                            <div class="input-underline"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dev_vk">
+                                <i class="fab fa-vk"></i>
+                                Ваш ВКонтакте
+                            </label>
+                            <input type="text" id="dev_vk" name="dev_vk" placeholder="Ссылка на профиль или id">
+                            <div class="input-underline"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dev_languages">
+                                <i class="fas fa-code"></i>
+                                Какие языки программирования вы знаете?*
+                            </label>
+                            <textarea id="dev_languages" name="dev_languages" rows="3" placeholder="Перечислите языки программирования и ваш уровень владения" required></textarea>
+                            <div class="input-underline"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dev_about">
+                                <i class="fas fa-user"></i>
+                                Расскажите о себе (минимум 70 слов)*
+                            </label>
+                            <textarea id="dev_about" name="dev_about" rows="6" placeholder="Расскажите о своем опыте, проектах, навыках и целях..." required></textarea>
+                            <div class="word-counter">Слов: <span id="wordCount">0</span> (минимум 70)</div>
+                            <div class="input-underline"></div>
+                        </div>
+
+                        <div class="form-group radio-group">
+                            <p class="radio-label">
+                                <i class="fas fa-phone-volume"></i>
+                                Готовы ли вы пройти обзвон?*
+                            </p>
+                            <div class="radio-options">
+                                <label class="radio-option">
+                                    <input type="radio" name="dev_interview" value="Да" required>
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-text">Да, готов</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="dev_interview" value="Нет" required>
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-text">Нет, не готов</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group radio-group">
+                            <p class="radio-label">
+                                <i class="fas fa-microphone-alt"></i>
+                                Имеете ли микрофон?*
+                            </p>
+                            <div class="radio-options">
+                                <label class="radio-option">
+                                    <input type="radio" name="dev_microphone" value="Да" required>
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-text">Да, имею</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="dev_microphone" value="Нет" required>
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-text">Нет, не имею</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-footer">
+                            <p class="required-note"><span>*</span> Обязательные для заполнения поля</p>
+                            <button type="submit" id="submitDevBtn" class="submit-btn">
+                                <span class="btn-text">Отправить анкету разработчика</span>
+                                <i class="fas fa-code-branch"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </main>
 
             <footer>
@@ -159,7 +305,7 @@
                         <i class="fas fa-users"></i>
                         <span>Qullysuim Corporation</span>
                     </div>
-                    <p>© 2026 Анкета в команду администрации. Все права защищены.</p>
+                    <p>© 2026 Анкеты в команду. Все права защищены.</p>
                     <p class="footer-note">НАЙДИ КОМФОРТНОЕ ОБЩЕСТВО</p>
                 </div>
             </footer>
@@ -198,6 +344,107 @@
         </div>
     </div>
 
+    <!-- Модальное окно для анкеты разработчика -->
+    <div id="devResultModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header success">
+                <i class="fas fa-code"></i>
+                <h3>Анкета разработчика отправлена!</h3>
+            </div>
+            <div class="modal-body">
+                <p>Ваша заявка на позицию разработчика была отправлена на рассмотрение.</p>
+                <p>Время рассмотрения заявки: <strong>до 2 недель</strong>.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="closeDevModal" class="modal-btn">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script>
+        // JavaScript для работы с вкладками
+        document.addEventListener('DOMContentLoaded', function() {
+            // Переключение между вкладками
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Убираем активный класс у всех кнопок и контента
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Добавляем активный класс текущей кнопке и соответствующему контенту
+                    this.classList.add('active');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+            });
+            
+            // Счетчик слов для поля "Расскажите о себе"
+            const aboutTextarea = document.getElementById('dev_about');
+            const wordCountSpan = document.getElementById('wordCount');
+            
+            aboutTextarea.addEventListener('input', function() {
+                const text = this.value.trim();
+                const wordCount = text === '' ? 0 : text.split(/\s+/).length;
+                wordCountSpan.textContent = wordCount;
+                
+                // Изменяем цвет счетчика, если слов недостаточно
+                if (wordCount < 70) {
+                    wordCountSpan.style.color = '#ff6b6b';
+                } else {
+                    wordCountSpan.style.color = '#51cf66';
+                }
+            });
+            
+            // Отправка анкеты разработчика
+            const devForm = document.getElementById('developerForm');
+            const devResultModal = document.getElementById('devResultModal');
+            const closeDevModal = document.getElementById('closeDevModal');
+            
+            if (devForm) {
+                devForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Проверка количества слов
+                    const aboutText = document.getElementById('dev_about').value.trim();
+                    const wordCount = aboutText === '' ? 0 : aboutText.split(/\s+/).length;
+                    
+                    if (wordCount < 70) {
+                        alert('Пожалуйста, расскажите о себе более подробно (минимум 70 слов). Сейчас у вас ' + wordCount + ' слов.');
+                        return;
+                    }
+                    
+                    // Здесь должен быть код для отправки данных на сервер
+                    // Для демонстрации просто показываем модальное окно
+                    
+                    // Сброс формы
+                    devForm.reset();
+                    wordCountSpan.textContent = '0';
+                    wordCountSpan.style.color = '#ff6b6b';
+                    
+                    // Показываем модальное окно
+                    devResultModal.style.display = 'flex';
+                });
+            }
+            
+            // Закрытие модального окна разработчика
+            if (closeDevModal) {
+                closeDevModal.addEventListener('click', function() {
+                    devResultModal.style.display = 'none';
+                });
+            }
+            
+            // Закрытие модального окна при клике вне его
+            window.addEventListener('click', function(e) {
+                if (e.target === devResultModal) {
+                    devResultModal.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
