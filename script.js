@@ -1,8 +1,8 @@
 // Вебхук URL для админов
-const ADMIN_WEBHOOK_URL = "https://discord.com/api/webhooks/1465054930787373299/BEGl8AVwF3r23gU5-HJqih8KxDAh3lA8DCjOtJkwOUUlDxnJoh2wW8uinmrFIsyMzpBm";
+const ADMIN_WEBHOOK_URL = "${{ secrets.ADMIN_WEBHOOK }}";
 
 // Вебхук URL для разработчиков (ЗАМЕНИТЕ НА СВОЙ!)
-const DEV_WEBHOOK_URL = "https://discord.com/api/webhooks/1465054930787373299/BEGl8AVwF3r23gU5-HJqih8KxDAh3lA8DCjOtJkwOUUlDxnJoh2wW8uinmrFIsyMzpBm";
+const DEV_WEBHOOK_URL = "${{ secrets.DEV_WEBHOOK }}";
 
 // Элементы DOM
 const adminForm = document.getElementById('applicationForm');
